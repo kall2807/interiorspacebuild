@@ -1,828 +1,1406 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InteriorSpace</title>
-
-    <link rel="stylesheet" href="services.css">
-
-    <!-- FONT -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- ICON -->
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
-    <style>
-
-        /* =========================
-                GLOBAL
-        ========================= */
-
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:'Poppins',sans-serif;
-            scroll-behavior:smooth;
-        }
-
-        body{
-            background:#f7f9fc;
-            overflow-x:hidden;
-        }
-
-        /* =========================
-                NAVBAR
-        ========================= */
-
-        header{
-            width:100%;
-            padding:20px 8%;
-
-            position:fixed;
-            top:0;
-            left:0;
-            z-index:1000;
-
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-
-            background:rgba(255,255,255,0.08);
-            backdrop-filter:blur(12px);
-
-            border-bottom:1px solid rgba(255,255,255,0.1);
-        }
-
-        .logo{
-            font-size:34px;
-            font-weight:800;
-            color:white;
-        }
-
-        .logo span{
-            color:#7fd8ff;
-        }
-
-        nav a{
-            text-decoration:none;
-            color:white;
-            margin:0 18px;
-            font-weight:500;
-            transition:0.3s;
-            position:relative;
-        }
-
-        nav a:hover{
-            color:#7fd8ff;
-        }
-
-        nav a::after{
-            content:'';
-            position:absolute;
-            width:0%;
-            height:2px;
-            background:#7fd8ff;
-            left:0;
-            bottom:-6px;
-            transition:0.3s;
-        }
-
-        nav a:hover::after{
-            width:100%;
-        }
-
-        .btn{
-            padding:13px 30px;
-            border:none;
-            border-radius:40px;
-            background:linear-gradient(135deg,#3da5ff,#35e0ff);
-            color:white;
-            font-weight:600;
-            cursor:pointer;
-            transition:0.3s;
-        }
-
-        .btn:hover{
-            transform:translateY(-5px);
-        }
-
-        /* =========================
-                HERO
-        ========================= */
-
-        .hero{
-            width:100%;
-            height:100vh;
-
-            background:
-            linear-gradient(rgba(0,40,90,0.75),rgba(0,60,130,0.75)),
-            url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1600&auto=format&fit=crop');
-
-            background-size:cover;
-            background-position:center;
-
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            text-align:center;
-
-            padding:20px;
-            color:white;
-        }
-
-        .hero-content{
-            max-width:900px;
-        }
-
-        .hero-content h1{
-            font-size:85px;
-            line-height:1.1;
-            margin-bottom:25px;
-            font-weight:800;
-        }
-
-        .hero-content p{
-            font-size:20px;
-            line-height:1.9;
-            margin-bottom:35px;
-            color:#e5f6ff;
-        }
-
-        .hero-buttons{
-            display:flex;
-            justify-content:center;
-            gap:20px;
-            flex-wrap:wrap;
-        }
-
-        .btn-outline{
-            padding:13px 30px;
-            border-radius:40px;
-            border:2px solid white;
-            color:white;
-            text-decoration:none;
-            transition:0.3s;
-        }
-
-        .btn-outline:hover{
-            background:white;
-            color:#0066ff;
-        }
-
-        /* =========================
-                ABOUT
-        ========================= */
-
-        .about{
-            padding:120px 8%;
-            background:white;
-        }
-
-        .about-container{
-            display:flex;
-            align-items:center;
-            gap:70px;
-            flex-wrap:wrap;
-        }
-
-        .about-image{
-            flex:1;
-            position:relative;
-        }
-
-        .about-image img{
-            width:100%;
-            border-radius:25px;
-            box-shadow:0 20px 40px rgba(0,0,0,0.12);
-        }
-
-        .experience-box{
-            position:absolute;
-            left:30px;
-            bottom:30px;
-
-            background:linear-gradient(135deg,#0066ff,#35e0ff);
-
-            padding:25px 30px;
-            border-radius:20px;
-
-            color:white;
-        }
-
-        .experience-box h3{
-            font-size:40px;
-        }
-
-        .about-text{
-            flex:1;
-        }
-
-        .about-tag{
-            color:#1ea7ff;
-            font-size:14px;
-            font-weight:600;
-            letter-spacing:2px;
-        }
-
-        .about-text h2{
-            font-size:55px;
-            color:#0f2b57;
-            line-height:1.3;
-            margin:15px 0 20px;
-        }
-
-        .line{
-            width:60px;
-            height:4px;
-            border-radius:10px;
-            background:#1ea7ff;
-            margin-bottom:30px;
-        }
-
-        .about-text p{
-            color:#666;
-            line-height:1.9;
-            margin-bottom:20px;
-        }
-
-        .about-list{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-            gap:20px;
-            margin-top:35px;
-        }
-
-        .about-item{
-            display:flex;
-            gap:15px;
-            align-items:flex-start;
-        }
-
-        .about-item i{
-            width:45px;
-            height:45px;
-            border-radius:50%;
-
-            background:#eef5ff;
-            color:#1f7dff;
-
-            display:flex;
-            justify-content:center;
-            align-items:center;
-
-            font-size:18px;
-        }
-
-        .about-item h4{
-            color:#0f2b57;
-            margin-bottom:5px;
-        }
-
-        .about-item p{
-            font-size:14px;
-            margin:0;
-        }
-
-        /* =========================
-                SERVICES
-        ========================= */
-
-        .services{
-            padding:120px 8%;
-            background:#f7f9fc;
-        }
-
-        .section-title{
-            text-align:center;
-            margin-bottom:70px;
-        }
-
-        .section-title span{
-            color:#1ea7ff;
-            font-size:14px;
-            font-weight:600;
-            letter-spacing:2px;
-        }
-
-        .section-title h2{
-            font-size:55px;
-            color:#0f2b57;
-            line-height:1.3;
-            margin-top:15px;
-        }
-
-        .title-line{
-            width:60px;
-            height:4px;
-            background:#1ea7ff;
-            border-radius:10px;
-            margin:20px auto 0;
-        }
-
-        .service-container{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-            gap:30px;
-        }
-
-        .card{
-            background:white;
-            border-radius:25px;
-            padding:45px 35px;
-            text-align:center;
-
-            box-shadow:0 10px 30px rgba(0,0,0,0.05);
-
-            transition:0.4s;
-        }
-
-        .card:hover{
-            transform:translateY(-10px);
-        }
-
-        .icon{
-            width:95px;
-            height:95px;
-            border-radius:50%;
-
-            background:#eef5ff;
-
-            display:flex;
-            justify-content:center;
-            align-items:center;
-
-            margin:auto;
-            margin-bottom:25px;
-        }
-
-        .icon i{
-            font-size:40px;
-            color:#1f7dff;
-        }
-
-        .card h3{
-            font-size:28px;
-            color:#0f2b57;
-            margin-bottom:18px;
-        }
-
-        .card p{
-            color:#666;
-            line-height:1.9;
-        }
-
-        /* =========================
-                FOOTER
-        ========================= */
-
-        footer{
-            background:#081b34;
-            color:white;
-            text-align:center;
-            padding:25px;
-        }
-
-        /* =========================
-                RESPONSIVE
-        ========================= */
-
-        @media(max-width:992px){
-
-            .hero-content h1{
-                font-size:60px;
-            }
-
-            .about-container{
-                flex-direction:column;
-            }
-
-        }
-
-        @media(max-width:768px){
-
-            header{
-                flex-direction:column;
-                gap:15px;
-            }
-
-            nav{
-                text-align:center;
-            }
-
-            nav a{
-                display:inline-block;
-                margin:10px;
-            }
-
-            .hero-content h1{
-                font-size:45px;
-            }
-
-            .section-title h2,
-            .about-text h2{
-                font-size:38px;
-            }
-
-        }
-
-    </style>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>InteriorSpace</title>
+
+
+<link rel="stylesheet" href="services.css">
+
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+<!-- ICON -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+<style>
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+
+body{
+    background:#f7f9fc;
+    overflow-x:hidden;
+}
+
+
+/* =========================
+        NAVBAR
+========================= */
+
+
+header{
+
+    width:100%;
+    padding:20px 8%;
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    z-index:1000;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(255,255,255,0.1);
+
+}
+
+
+.logo{
+
+    font-size:34px;
+    font-weight:800;
+    color:white;
+
+}
+
+
+.logo span{
+
+    color:#7fd8ff;
+
+}
+
+
+nav a{
+
+    text-decoration:none;
+    color:white;
+
+    margin:0 18px;
+
+    font-weight:500;
+
+    transition:.3s;
+
+    position:relative;
+
+}
+
+
+nav a:hover{
+
+    color:#7fd8ff;
+
+}
+
+
+nav a::after{
+
+    content:'';
+
+    position:absolute;
+
+    width:0%;
+    height:2px;
+
+    background:#7fd8ff;
+
+    left:0;
+    bottom:-6px;
+
+    transition:.3s;
+
+}
+
+
+nav a:hover::after{
+
+    width:100%;
+
+}
+
+
+
+.btn{
+
+    padding:13px 30px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:linear-gradient(135deg,#3da5ff,#35e0ff);
+
+    color:white;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+.btn:hover{
+
+    transform:translateY(-5px);
+
+}
+
+
+
+/* =========================
+        HERO
+========================= */
+
+
+.hero{
+
+    width:100%;
+    height:100vh;
+
+
+    background:
+
+    linear-gradient(
+    rgba(0,40,90,.75),
+    rgba(0,60,130,.75)
+    ),
+
+    url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1600&auto=format&fit=crop');
+
+
+    background-size:cover;
+
+    background-position:center;
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+
+    padding:20px;
+
+    color:white;
+
+}
+
+
+
+.hero-content{
+
+    max-width:900px;
+
+}
+
+
+
+.hero-content h1{
+
+    font-size:85px;
+
+    line-height:1.1;
+
+    margin-bottom:25px;
+
+    font-weight:800;
+
+}
+
+
+
+.hero-content p{
+
+    font-size:20px;
+
+    line-height:1.9;
+
+    margin-bottom:35px;
+
+    color:#e5f6ff;
+
+}
+
+
+
+.hero-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+
+
+.btn-outline{
+
+    padding:13px 30px;
+
+    border-radius:40px;
+
+    border:2px solid white;
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+
+.btn-outline:hover{
+
+    background:white;
+
+    color:#0066ff;
+
+}
+
+
+/* =========================
+        ABOUT
+========================= */
+
+
+.about{
+
+    padding:120px 8%;
+
+    background:white;
+
+}
+
+
+
+.about-container{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:70px;
+
+    flex-wrap:wrap;
+
+}
+
+
+
+.about-image{
+
+    flex:1;
+
+    position:relative;
+
+}
+
+
+
+.about-image img{
+
+    width:100%;
+
+    border-radius:25px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+
+}
+
+
+
+.experience-box{
+
+    position:absolute;
+
+    left:30px;
+
+    bottom:30px;
+
+
+    background:
+
+    linear-gradient(135deg,#0066ff,#35e0ff);
+
+
+    padding:25px 30px;
+
+    border-radius:20px;
+
+    color:white;
+
+}
+
+
+.experience-box h3{
+
+    font-size:40px;
+
+}
+
+
+
+.about-text{
+
+    flex:1;
+
+}
+
+
+.about-tag{
+
+    color:#1ea7ff;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    letter-spacing:2px;
+
+}
+
+
+.about-text h2{
+
+    font-size:55px;
+
+    color:#0f2b57;
+
+    line-height:1.3;
+
+    margin:15px 0 20px;
+
+}
+
+
+.line{
+
+    width:60px;
+
+    height:4px;
+
+    border-radius:10px;
+
+    background:#1ea7ff;
+
+    margin-bottom:30px;
+
+}
+
+
+.about-text p{
+
+    color:#666;
+
+    line-height:1.9;
+
+    margin-bottom:20px;
+
+}
+
+</style>
 
 </head>
+
+
 <body>
 
-    <!-- NAVBAR -->
 
-    <header>
+<!-- =========================
+        NAVBAR
+========================= -->
 
-        <div class="logo">
-            Interior<span>Space</span>
-        </div>
 
-      <nav>
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="about.html" class="nav-link">About</a>
-    <a href="services.html" class="nav-link">Services</a>
-    <a href="project.html" class="nav-link">Projects</a>
-    <a href="contact.html" class="nav-link">Contact</a>
-</nav>
+<header>
 
-        <a href="https://wa.me/62895411560995" class="btn">
-    Konsultasi
+
+    <div class="logo">
+        Interior<span>Space</span>
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">Home</a>
+
+        <a href="about.html">About</a>
+
+        <a href="services.html">Services</a>
+
+        <a href="project.html">Projects</a>
+
+        <a href="contact.html">Contact</a>
+
+    </nav>
+
+
+    <a href="https://wa.me/62895411560995" class="btn">
+        Konsultasi
+    </a>
+
+
+</header>
+
+
+
+
+<!-- =========================
+        HERO
+========================= -->
+
+
+<section class="hero">
+
+
+<div class="hero-content">
+
+
+<h1>
+    Modern Interior <br>
+    Design Solution
+</h1>
+
+
+<p>
+    Wujudkan desain interior bangunan impian Anda
+    dengan konsep modern, elegan, minimalis,
+    dan nyaman.
+</p>
+
+
+
+<div class="hero-buttons">
+
+
+<button class="btn">
+    Mulai Sekarang
+</button>
+
+
+
+<a href="project.html" class="btn-outline">
+    Lihat Project
 </a>
-    </header>
 
-    <!-- HERO -->
 
-    <section class="hero">
+</div>
 
-        <div class="hero-content">
 
-            <h1>
-                Modern Interior <br>
-                Design Solution
-            </h1>
+</div>
 
-            <p>
-                Wujudkan desain interior bangunan impian Anda dengan konsep modern,
-                elegan, minimalis, dan nyaman.
-            </p>
-
-            <div class="hero-buttons">
-
-                <button class="btn">
-                    Mulai Sekarang
-                </button>
-
-                <a href="#" class="btn-outline">
-                    Lihat Project
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- ABOUT -->
-
-    <section class="about" id="about">
-
-        <div class="about-container">
-
-            <div class="about-image">
-
-                <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop">
-
-                <div class="experience-box">
-
-                    <h3>10+</h3>
-                    <p>Tahun Pengalaman</p>
-
-                </div>
-
-            </div>
-
-            <div class="about-text">
-
-                <span class="about-tag">
-                    TENTANG KAMI
-                </span>
-
-                <h2>
-                    Interior Design Modern <br>
-                    Untuk Hunian Impian
-                </h2>
-
-                <div class="line"></div>
-
-                <p>
-                    InteriorSpace adalah perusahaan desain interior profesional
-                    yang berfokus pada konsep modern, minimalis, dan elegan.
-                </p>
-
-                <p>
-                    Kami menghadirkan desain terbaik untuk rumah, kantor,
-                    cafe, maupun bangunan bisnis lainnya.
-                </p>
-
-                <div class="about-list">
-
-                    <div class="about-item">
-
-                        <i class="fa-solid fa-house"></i>
-
-                        <div>
-                            <h4>Design Modern</h4>
-                            <p>Konsep modern dan elegan.</p>
-                        </div>
-
-                    </div>
-
-                    <div class="about-item">
-
-                        <i class="fa-solid fa-users"></i>
-
-                        <div>
-                            <h4>Tim Profesional</h4>
-                            <p>Dikerjakan oleh tim ahli.</p>
-                        </div>
-
-                    </div>
-
-                    <div class="about-item">
-
-                        <i class="fa-solid fa-award"></i>
-
-                        <div>
-                            <h4>Kualitas Premium</h4>
-                            <p>Material terbaik berkualitas.</p>
-                        </div>
-
-                    </div>
-
-                    <div class="about-item">
-
-                        <i class="fa-solid fa-heart"></i>
-
-                        <div>
-                            <h4>Kepuasan Klien</h4>
-                            <p>Prioritas utama pelayanan kami.</p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <section class="services">
-
-    <div class="section-title">
-        <span>LAYANAN KAMI</span>
-        <h2>Pilih Paket Interior Anda</h2>
-        <p>
-            Sesuaikan kebutuhan desain interior dengan paket yang tersedia.
-        </p>
-    </div>
-
-    <div class="service-container">
-
-        <!-- Paket 1 -->
-
-        <div class="card">
-
-            <h3>Design Planning</h3>
-
-            <div class="price">
-                Rp12.000.000
-            </div>
-
-            <p class="price-detail">
-                + Rp100.000 / m²
-            </p>
-
-            <ul>
-                <li>Konsep Desain Interior</li>
-                <li>Layout Ruangan</li>
-                <li>2D Floor Plan</li>
-                <li>3D Visualisasi</li>
-            </ul>
-
-            <a href="contact.html" class="service-btn">
-                Pilih Paket
-            </a>
-
-        </div>
-
-        <!-- Paket 2 -->
-
-        <div class="card featured">
-
-            <span class="badge">
-                POPULER
-            </span>
-
-            <h3>Standar Interior</h3>
-
-            <div class="price">
-                Rp28.000.000
-            </div>
-
-            <p class="price-detail">
-                + Rp250.000 / m²
-            </p>
-
-            <ul>
-                <li>Semua Fitur Design Planning</li>
-                <li>Pemilihan Material</li>
-                <li>Furniture Custom</li>
-                <li>Pendampingan Proyek</li>
-            </ul>
-
-            <a href="contact.html" class="service-btn">
-                Pilih Paket
-            </a>
-
-        </div>
-
-        <!-- Paket 3 -->
-
-        <div class="card">
-
-            <h3>Premium Interior</h3>
-
-            <div class="price">
-                Rp50.000.000
-            </div>
-
-            <p class="price-detail">
-                + Rp500.000 / m²
-            </p>
-
-            <ul>
-                <li>Full Interior Service</li>
-                <li>Furniture Premium</li>
-                <li>Project Management</li>
-                <li>Turnkey Project</li>
-            </ul>
-
-            <a href="contact.html" class="service-btn">
-                Pilih Paket
-            </a>
-
-        </div>
-
-    </div>
 
 </section>
 
-    <!-- SERVICES -->
 
-    <section class="services" id="services">
 
-        <div class="section-title">
 
-            <span>LAYANAN KAMI</span>
 
-            <h2>
-                Solusi Interior Terbaik <br>
-                Untuk Anda
-            </h2>
+<!-- =========================
+        ABOUT
+========================= -->
 
-            <div class="title-line"></div>
 
-        </div>
+<section class="about">
 
-        <div class="service-container">
 
-            <div class="card">
+<div class="about-container">
 
-                <div class="icon">
-                    <i class="fa-solid fa-house"></i>
-                </div>
 
-                <h3>Interior Rumah</h3>
 
-                <p>
-                    Desain interior rumah modern dan nyaman.
-                </p>
+<div class="about-image">
 
-            </div>
 
-            <div class="card">
+<img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop">
 
-                <div class="icon">
-                    <i class="fa-solid fa-building"></i>
-                </div>
 
-                <h3>Interior Kantor</h3>
+<div class="experience-box">
 
-                <p>
-                    Ruang kerja profesional dan modern.
-                </p>
+<h3>
+10+
+</h3>
 
-            </div>
+<p>
+Tahun Pengalaman
+</p>
 
-            <div class="card">
+</div>
 
-                <div class="icon">
-                    <i class="fa-solid fa-couch"></i>
-                </div>
 
-                <h3>Furniture Custom</h3>
+</div>
 
-                <p>
-                    Furniture premium sesuai kebutuhan Anda.
-                </p>
 
-            </div>
 
-        </div>
 
-    </section>
 
-    <script src="script.js"></script>
+<div class="about-text">
 
-    <footer class="footer">
 
-    <div class="footer-container">
+<span class="about-tag">
+TENTANG KAMI
+</span>
 
-        <div class="footer-box">
-            <h2>Interior<span>Space</span></h2>
 
-            <p>
-                Mewujudkan desain interior modern, elegan,
-                dan nyaman untuk rumah, kantor, cafe,
-                maupun bangunan komersial.
-            </p>
 
-            <div class="social">
+<h2>
+Interior Design Modern
+<br>
+Untuk Hunian Impian
+</h2>
 
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
 
-                <a href="#"><i class="fab fa-instagram"></i></a>
 
-                <a href="#"><i class="fab fa-twitter"></i></a>
+<div class="line"></div>
 
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
 
-            </div>
-        </div>
 
-        <div class="footer-box">
+<p>
+InteriorSpace adalah perusahaan desain interior profesional
+yang berfokus pada konsep modern, minimalis,
+dan elegan.
+</p>
 
-            <h3>Menu</h3>
 
-            <a href="homepage.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="project.html">Projects</a>
-            <a href="contact.html">Contact</a>
+<p>
+Kami menghadirkan desain terbaik untuk rumah,
+kantor, cafe, maupun bangunan bisnis lainnya.
+</p>
 
-        </div>
 
-        <div class="footer-box">
 
-            <h3>Layanan</h3>
 
-            <a href="#">Interior Rumah</a>
-            <a href="#">Interior Kantor</a>
-            <a href="#">Furniture Custom</a>
-            <a href="#">Renovasi Interior</a>
+<div class="about-list">
 
-        </div>
 
-        <div class="footer-box">
 
-            <h3>Kontak</h3>
+<div class="about-item">
 
-            <p><i class="fas fa-phone"></i> +62 895-4115-60995</p>
+<i class="fa-solid fa-house"></i>
 
-            <p><i class="fas fa-envelope"></i> interiorspace@gmail.com</p>
+<div>
 
-            <p><i class="fas fa-location-dot"></i> Bekasi, Indonesia</p>
+<h4>
+Design Modern
+</h4>
 
-        </div>
+<p>
+Konsep modern dan elegan.
+</p>
 
-    </div>
+</div>
 
-    <div class="footer-bottom">
+</div>
 
-        <p>
-            © 2026 InteriorSpace | All Rights Reserved
-        </p>
 
-    </div>
+
+
+
+<div class="about-item">
+
+
+<i class="fa-solid fa-users"></i>
+
+
+<div>
+
+<h4>
+Tim Profesional
+</h4>
+
+<p>
+Dikerjakan oleh tim ahli.
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="about-item">
+
+
+<i class="fa-solid fa-award"></i>
+
+
+<div>
+
+<h4>
+Kualitas Premium
+</h4>
+
+<p>
+Material terbaik berkualitas.
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="about-item">
+
+
+<i class="fa-solid fa-heart"></i>
+
+
+<div>
+
+<h4>
+Kepuasan Klien
+</h4>
+
+<p>
+Prioritas utama pelayanan kami.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- =========================
+        PAKET INTERIOR
+========================= -->
+
+
+<section class="services">
+
+
+
+<div class="section-title">
+
+
+<span>
+LAYANAN KAMI
+</span>
+
+
+<h2>
+Pilih Paket Interior Anda
+</h2>
+
+
+<p>
+Sesuaikan kebutuhan desain interior
+dengan paket yang tersedia.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="service-container">
+
+
+
+
+
+
+<!-- DESIGN PLANNING -->
+
+
+<div class="card">
+
+
+<h3>
+Design Planning
+</h3>
+
+
+
+<div class="price">
+Rp12.000.000
+</div>
+
+
+
+<p class="price-detail">
++ Rp100.000 / m²
+</p>
+
+
+
+<ul>
+
+<li>
+Konsep Desain Interior
+</li>
+
+<li>
+Layout Ruangan
+</li>
+
+<li>
+2D Floor Plan
+</li>
+
+<li>
+3D Visualisasi
+</li>
+
+
+</ul>
+
+
+
+<a 
+href="https://wa.me/62895411560995?text=Halo%20InteriorSpace,%20saya%20tertarik%20dengan%20paket%20Design%20Planning"
+
+class="service-btn"
+
+target="_blank">
+
+Pilih Paket
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- STANDAR INTERIOR -->
+
+
+<div class="card featured">
+
+
+<span class="badge">
+POPULER
+</span>
+
+
+
+<h3>
+Standar Interior
+</h3>
+
+
+
+
+<div class="price">
+Rp28.000.000
+</div>
+
+
+
+<p class="price-detail">
++ Rp250.000 / m²
+</p>
+
+
+
+<ul>
+
+
+<li>
+Semua Fitur Design Planning
+</li>
+
+
+<li>
+Pemilihan Material
+</li>
+
+
+<li>
+Furniture Custom
+</li>
+
+
+<li>
+Pendampingan Proyek
+</li>
+
+
+
+</ul>
+
+
+
+
+
+<a 
+
+href="https://wa.me/62895411560995?text=Halo%20InteriorSpace,%20saya%20tertarik%20dengan%20paket%20Standar%20Interior"
+
+
+class="service-btn"
+
+target="_blank">
+
+
+Pilih Paket
+
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- PREMIUM INTERIOR -->
+
+
+<div class="card">
+
+
+<h3>
+Premium Interior
+</h3>
+
+
+
+
+<div class="price">
+Rp50.000.000
+</div>
+
+
+
+
+<p class="price-detail">
++ Rp500.000 / m²
+</p>
+
+
+
+
+<ul>
+
+
+<li>
+Full Interior Service
+</li>
+
+
+<li>
+Furniture Premium
+</li>
+
+
+<li>
+Project Management
+</li>
+
+
+<li>
+Turnkey Project
+</li>
+
+
+
+</ul>
+
+
+
+
+
+<a 
+
+href="https://wa.me/62895411560995?text=Halo%20InteriorSpace,%20saya%20tertarik%20dengan%20paket%20Premium%20Interior"
+
+
+class="service-btn"
+
+target="_blank">
+
+
+Pilih Paket
+
+
+</a>
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+</section>
+
+    <!-- =========================
+        SERVICES DETAIL
+========================= -->
+
+
+<section class="services" id="services">
+
+
+<div class="section-title">
+
+
+<span>
+LAYANAN KAMI
+</span>
+
+
+<h2>
+Solusi Interior Terbaik
+<br>
+Untuk Anda
+</h2>
+
+
+<div class="title-line"></div>
+
+
+</div>
+
+
+
+
+<div class="service-container">
+
+
+
+<div class="card">
+
+
+<div class="icon">
+
+<i class="fa-solid fa-house"></i>
+
+</div>
+
+
+
+<h3>
+Interior Rumah
+</h3>
+
+
+
+<p>
+Desain interior rumah modern,
+minimalis, dan nyaman sesuai
+dengan karakter pemilik.
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="card">
+
+
+<div class="icon">
+
+<i class="fa-solid fa-building"></i>
+
+</div>
+
+
+
+<h3>
+Interior Kantor
+</h3>
+
+
+
+<p>
+Menciptakan ruang kerja profesional,
+nyaman, dan meningkatkan produktivitas.
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="card">
+
+
+<div class="icon">
+
+<i class="fa-solid fa-couch"></i>
+
+</div>
+
+
+
+<h3>
+Furniture Custom
+</h3>
+
+
+
+<p>
+Furniture premium dengan desain
+khusus sesuai kebutuhan ruangan.
+</p>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- =========================
+        FOOTER
+========================= -->
+
+
+<footer class="footer">
+
+
+
+<div class="footer-container">
+
+
+
+
+
+<div class="footer-box">
+
+
+<h2>
+Interior<span>Space</span>
+</h2>
+
+
+
+<p>
+Mewujudkan desain interior modern,
+elegan, dan nyaman untuk rumah,
+kantor, cafe, maupun bangunan
+komersial.
+</p>
+
+
+
+<div class="social">
+
+
+<a href="#">
+<i class="fab fa-facebook-f"></i>
+</a>
+
+
+<a href="#">
+<i class="fab fa-instagram"></i>
+</a>
+
+
+<a href="#">
+<i class="fab fa-twitter"></i>
+</a>
+
+
+<a href="#">
+<i class="fab fa-linkedin-in"></i>
+</a>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="footer-box">
+
+
+<h3>
+Menu
+</h3>
+
+
+
+<a href="index.html">
+Home
+</a>
+
+
+<a href="about.html">
+About
+</a>
+
+
+<a href="services.html">
+Services
+</a>
+
+
+<a href="project.html">
+Projects
+</a>
+
+
+<a href="contact.html">
+Contact
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="footer-box">
+
+
+<h3>
+Layanan
+</h3>
+
+
+
+<a href="#">
+Interior Rumah
+</a>
+
+
+<a href="#">
+Interior Kantor
+</a>
+
+
+<a href="#">
+Furniture Custom
+</a>
+
+
+<a href="#">
+Renovasi Interior
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="footer-box">
+
+
+<h3>
+Kontak
+</h3>
+
+
+
+<p>
+<i class="fas fa-phone"></i>
++62 895-4115-60995
+</p>
+
+
+
+<p>
+<i class="fas fa-envelope"></i>
+interiorspace@gmail.com
+</p>
+
+
+
+<p>
+<i class="fas fa-location-dot"></i>
+Bekasi, Indonesia
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+<div class="footer-bottom">
+
+
+<p>
+© 2026 InteriorSpace | All Rights Reserved
+</p>
+
+
+</div>
+
+
 
 </footer>
 
+
+
+
+
+
+
+<!-- =========================
+        JAVASCRIPT
+========================= -->
+
+
+<script>
+
+
+// Navbar Active
+
+
+const currentPage = window.location.pathname.split("/").pop();
+
+
+
+document.querySelectorAll("nav a").forEach(link=>{
+
+
+if(link.getAttribute("href") === currentPage){
+
+
+link.classList.add("active");
+
+
+}
+
+
+});
+
+
+
+
+// Button WhatsApp Hero
+
+
+document.querySelector(".hero .btn").onclick=function(){
+
+
+window.open(
+"https://wa.me/62895411560995?text=Halo%20InteriorSpace,%20saya%20ingin%20konsultasi%20desain%20interior",
+"_blank"
+);
+
+
+}
+
+
+
+</script>
+
+
+
+
 </body>
+
 </html>
