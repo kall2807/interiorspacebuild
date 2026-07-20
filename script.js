@@ -64,3 +64,69 @@ form.addEventListener("submit", function (e) {
     });
 
 });
+
+// ============================
+// ACTIVE NAVBAR
+// ============================
+
+const currentPage = window.location.pathname.split("/").pop();
+
+document.querySelectorAll("nav a").forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+    }
+});
+
+// ============================
+// HAMBURGER MENU
+// ============================
+
+const menuBtn = document.querySelector(".menu-btn");
+const nav = document.querySelector("nav");
+
+if (menuBtn) {
+
+    menuBtn.addEventListener("click", () => {
+
+        nav.classList.toggle("show");
+        menuBtn.classList.toggle("active");
+
+    });
+
+}
+
+// ============================
+// TUTUP MENU SAAT LINK DIKLIK
+// ============================
+
+document.querySelectorAll("nav a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        nav.classList.remove("show");
+
+        if(menuBtn){
+            menuBtn.classList.remove("active");
+        }
+
+    });
+
+});
+
+// ============================
+// RESET SAAT LAYAR BESAR
+// ============================
+
+window.addEventListener("resize", () => {
+
+    if(window.innerWidth > 768){
+
+        nav.classList.remove("show");
+
+        if(menuBtn){
+            menuBtn.classList.remove("active");
+        }
+
+    }
+
+});
