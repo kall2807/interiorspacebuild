@@ -664,3 +664,46 @@ nav a.active::after{
     border-radius:50px;
     font-weight:600;
 }
+
+.menu-btn{
+    display:none;
+    flex-direction:column;
+    gap:6px;
+    cursor:pointer;
+}
+
+.menu-btn span{
+    width:28px;
+    height:3px;
+    background:#222;
+    border-radius:5px;
+    transition:.3s;
+}
+
+@media(max-width:768px){
+
+    .menu-btn{
+        display:flex;
+    }
+
+    nav{
+        position:absolute;
+        top:80px;
+        left:0;
+        width:100%;
+        background:#fff;
+        display:none;
+        flex-direction:column;
+        text-align:center;
+        padding:20px 0;
+        box-shadow:0 10px 20px rgba(0,0,0,.1);
+    }
+
+    nav.show{
+        display:flex;
+    }
+
+    nav a{
+        margin:15px 0;
+    }
+}
