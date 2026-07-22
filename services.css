@@ -552,12 +552,138 @@ nav a.active::after{
     color:#d9e7ff;
 }
 
-/* ================= RESPONSIVE ================= */
+/* =========================
+        RESPONSIVE
+========================= */
 
-@media(max-width:768px){
+@media (max-width:992px){
+
+    header{
+        padding:18px 5%;
+    }
+
+    .hero-content h1{
+        font-size:60px;
+    }
+
+    .about-container{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .about-image,
+    .about-text{
+        width:100%;
+    }
+
+    .experience-box{
+        left:50%;
+        transform:translateX(-50%);
+    }
+
+    .service-container{
+        grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    }
+
+}
+
+@media (max-width:768px){
+
+    header{
+        flex-direction:column;
+        align-items:center;
+        gap:15px;
+        padding:15px;
+    }
+
+    .logo{
+        font-size:28px;
+    }
+
+    nav{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        overflow-x:auto;
+        white-space:nowrap;
+        width:100%;
+        gap:20px;
+        padding-bottom:10px;
+    }
+
+    nav::-webkit-scrollbar{
+        display:none;
+    }
+
+    nav a{
+        margin:0;
+        flex-shrink:0;
+        font-size:15px;
+    }
+
+    .btn{
+        padding:10px 25px;
+        font-size:14px;
+    }
+
+    .hero{
+        height:auto;
+        padding:180px 20px 100px;
+    }
+
+    .hero-content h1{
+        font-size:42px;
+    }
+
+    .hero-content p{
+        font-size:16px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .hero-buttons a{
+        width:220px;
+        text-align:center;
+    }
+
+    .about{
+        padding:80px 20px;
+    }
+
+    .about-text h2{
+        font-size:36px;
+    }
+
+    .about-list{
+        grid-template-columns:1fr;
+    }
+
+    .services{
+        padding:80px 20px;
+    }
+
+    .section-title h2{
+        font-size:36px;
+    }
+
+    .service-container{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        padding:30px;
+    }
 
     .footer{
+        padding:60px 20px;
         text-align:center;
+    }
+
+    .footer-container{
+        grid-template-columns:1fr;
     }
 
     .social{
@@ -566,146 +692,26 @@ nav a.active::after{
 
 }
 
-.services{
-    padding:120px 8%;
-    background:#f8fbff;
-}
+@media (max-width:480px){
 
-.section-title{
-    text-align:center;
-    margin-bottom:60px;
-}
-
-.section-title span{
-    color:#3b82f6;
-    font-weight:600;
-    letter-spacing:2px;
-}
-
-.section-title h2{
-    font-size:48px;
-    margin:15px 0;
-    color:#0f172a;
-}
-
-.service-container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:30px;
-}
-
-.card{
-    background:white;
-    border-radius:30px;
-    padding:40px;
-    box-shadow:0 10px 35px rgba(0,0,0,.06);
-    position:relative;
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-10px);
-}
-
-.featured{
-    border:2px solid #3b82f6;
-}
-
-.badge{
-    position:absolute;
-    top:20px;
-    right:20px;
-    background:#3b82f6;
-    color:white;
-    padding:6px 15px;
-    border-radius:20px;
-    font-size:12px;
-}
-
-.card h3{
-    font-size:28px;
-    color:#0f172a;
-    margin-bottom:20px;
-}
-
-.price{
-    font-size:42px;
-    font-weight:700;
-    color:#2563eb;
-}
-
-.price-detail{
-    color:#64748b;
-    margin-bottom:25px;
-}
-
-.card ul{
-    list-style:none;
-    margin-bottom:30px;
-}
-
-.card ul li{
-    padding:12px 0;
-    border-bottom:1px solid #edf2f7;
-    color:#475569;
-}
-
-.service-btn{
-    display:block;
-    text-align:center;
-    background:linear-gradient(
-        135deg,
-        #3b82f6,
-        #60a5fa
-    );
-    color:white;
-    text-decoration:none;
-    padding:14px;
-    border-radius:50px;
-    font-weight:600;
-}
-
-.menu-btn{
-    display:none;
-    flex-direction:column;
-    gap:6px;
-    cursor:pointer;
-}
-
-.menu-btn span{
-    width:28px;
-    height:3px;
-    background:#222;
-    border-radius:5px;
-    transition:.3s;
-}
-
-@media(max-width:768px){
-
-    .menu-btn{
-        display:flex;
+    .hero-content h1{
+        font-size:32px;
     }
 
-    nav{
-        position:absolute;
-        top:80px;
-        left:0;
-        width:100%;
-        background:#fff;
-        display:none;
-        flex-direction:column;
-        text-align:center;
-        padding:20px 0;
-        box-shadow:0 10px 20px rgba(0,0,0,.1);
+    .hero-content p{
+        font-size:15px;
     }
 
-    nav.show{
-        display:flex;
+    .about-text h2,
+    .section-title h2{
+        font-size:30px;
     }
 
-    nav a{
-        margin:15px 0;
+    .price{
+        font-size:34px;
     }
+
 }
+
 
 
