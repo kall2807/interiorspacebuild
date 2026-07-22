@@ -50,3 +50,31 @@ if (form) {
     });
 
 }
+
+// ================================
+// ACTIVE MENU
+// ================================
+
+const links = document.querySelectorAll("nav a");
+
+links.forEach(link => {
+    if (link.href === window.location.href) {
+        link.classList.add("active");
+    }
+});
+
+// ================================
+// HEADER SCROLL
+// ================================
+
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 80) {
+        header.style.background = "rgba(10,30,60,.95)";
+        header.style.backdropFilter = "blur(15px)";
+    } else {
+        header.style.background = "rgba(255,255,255,.08)";
+        header.style.backdropFilter = "blur(12px)";
+    }
+});
