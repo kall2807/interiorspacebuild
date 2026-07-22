@@ -537,6 +537,8 @@ nav a.active::after{
 
 /* ================= RESPONSIVE ================= */
 
+/* ================= RESPONSIVE ================= */
+
 @media(max-width:768px){
 
     .footer{
@@ -548,20 +550,4 @@ nav a.active::after{
     }
 
 }
-
-.menu-btn{
-    display:none;
-    flex-direction:column;
-    gap:6px;
-    cursor:pointer;
-}
-
-.menu-btn span{
-    width:28px;
-    height:3px;
-    background:#222;
-    border-radius:5px;
-    transition:.3s;
-}
-
 
