@@ -495,3 +495,16 @@ nav a.active::after{
     color:#d9e7ff;
 }
 
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+    .footer{
+        text-align:center;
+    }
+
+    .social{
+        justify-content:center;
+    }
+
+}
