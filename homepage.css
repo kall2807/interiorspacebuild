@@ -591,3 +591,115 @@ nav a.active::after{
         margin:15px 0;
     }
 }
+
+
+@media(max-width:768px){
+
+    .footer{
+        text-align:center;
+    }
+
+    .social{
+        justify-content:center;
+    }
+
+}
+
+.services{
+    padding:120px 8%;
+    background:#f8fbff;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title span{
+    color:#3b82f6;
+    font-weight:600;
+    letter-spacing:2px;
+}
+
+.section-title h2{
+    font-size:48px;
+    margin:15px 0;
+    color:#0f172a;
+}
+
+.service-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    border-radius:30px;
+    padding:40px;
+    box-shadow:0 10px 35px rgba(0,0,0,.06);
+    position:relative;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.featured{
+    border:2px solid #3b82f6;
+}
+
+.badge{
+    position:absolute;
+    top:20px;
+    right:20px;
+    background:#3b82f6;
+    color:white;
+    padding:6px 15px;
+    border-radius:20px;
+    font-size:12px;
+}
+
+.card h3{
+    font-size:28px;
+    color:#0f172a;
+    margin-bottom:20px;
+}
+
+.price{
+    font-size:42px;
+    font-weight:700;
+    color:#2563eb;
+}
+
+.price-detail{
+    color:#64748b;
+    margin-bottom:25px;
+}
+
+.card ul{
+    list-style:none;
+    margin-bottom:30px;
+}
+
+.card ul li{
+    padding:12px 0;
+    border-bottom:1px solid #edf2f7;
+    color:#475569;
+}
+
+.service-btn{
+    display:block;
+    text-align:center;
+    background:linear-gradient(
+        135deg,
+        #3b82f6,
+        #60a5fa
+    );
+    color:white;
+    text-decoration:none;
+    padding:14px;
+    border-radius:50px;
+    font-weight:600;
+}
