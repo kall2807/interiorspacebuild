@@ -537,8 +537,6 @@ nav a.active::after{
 
 /* ================= RESPONSIVE ================= */
 
-/* ================= RESPONSIVE ================= */
-
 @media(max-width:768px){
 
     .footer{
@@ -550,4 +548,3 @@ nav a.active::after{
     }
 
 }
-
